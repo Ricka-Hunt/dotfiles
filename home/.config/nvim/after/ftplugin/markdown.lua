@@ -2,6 +2,7 @@
 vim.opt_local.spell = true -- spellcheck
 vim.opt_local.shiftwidth = 2 -- ensures tabs == 2 whitespaces
 vim.opt_local.textwidth = 0
+vim.opt_local.foldtext = ""
 -- vim.fn.setcellwidths({ { 0x2014, 0x2014, 2 } })
 vim.cmd("digraph -- 8212")
 
@@ -41,7 +42,11 @@ map(
   { remap = false, buffer = true, desc = "Next footnote" }
 )
 map("n", "<leader>mm", "<cmd>MarkmapOpen<CR>", { buffer = true, desc = "Open MarkMap" })
-
+map("n", "z1", "<cmd>set foldlevel=0<CR>", { buffer = true, desc = "Fold headers to h1" })
+map("n", "z2", "<cmd>set foldlevel=1<CR>", { buffer = true, desc = "Fold headers to h2" })
+map("n", "z3", "<cmd>set foldlevel=2<CR>", { buffer = true, desc = "Fold headers to h3" })
+map("n", "z4", "<cmd>set foldlevel=3<CR>", { buffer = true, desc = "Fold headers to h4" })
+map("n", "z5", "<cmd>set foldlevel=4<CR>", { buffer = true, desc = "Fold headers to h5" })
 ---- Custom Syntax -------------------------------------------------------------
 vim.cmd('syntax region ScarletText matchgroup=Conceal start="+R|" end="|+" concealends')
 vim.cmd('syntax region MossText matchgroup=Conceal start="+G|" end="|+" concealends')
@@ -101,10 +106,11 @@ vim.g.render_markdown_config = {
     alignment_indicator = "┈",
   },
   heading = {
-    -- position = "inline",
+    position = "inline",
+    icons = { " Ⅰ ", " Ⅱ ", " Ⅲ ", " Ⅳ ", " Ⅴ ", " Ⅵ " },
+    signs = { false },
     -- icons = { " 󰉫 ", " 󰉬 ", " 󰉭 ", " 󰉮 ", " 󰉯 ", " 󰉰 " },
     -- icons = { " 󰇊 ", " 󰇋 ", " 󰇌 ", " 󰇍 ", " 󰇎 ", " 󰇏 " },
-    icons = { " Ⅰ ", " Ⅱ ", " Ⅲ ", " Ⅳ ", " Ⅴ ", " Ⅵ " },
     -- icons = { " 🯱 ", " 🯲 ", " 🯳 ", " 🯴 ", " 🯵 ", " 🯶 " },
   },
   dash = {

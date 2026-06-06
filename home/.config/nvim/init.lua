@@ -1,6 +1,7 @@
----- COLORSCHEME ---------------------------------------------------------------
+--- COLORSCHEME ---------------------------------------------------------------
 vim.pack.add({ "https://codeberg.org/trickyni/desert-witch.nvim" })
 vim.cmd.colorscheme("desert-witch")
+vim.api.nvim_set_hl(0, "Folded", { fg = "#6b6055", bg = "#43392d" })
 ---- OPTIONS -------------------------------------------------------------------
 --stylua: ignore start
 vim.opt.termguicolors  = true
@@ -38,9 +39,13 @@ vim.opt.smoothscroll   = true
 vim.opt.splitright     = true
 vim.opt.undofile       = true
 vim.opt.shortmess:append("Swl")
-vim.g.markdown_folding = 1
 vim.opt.foldlevelstart = 99
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.fillchars:append({foldsep="│",foldopen="┬",foldclose="╞",foldinner="┆"})
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 --stylua: ignore end
+--
 ---- KEYMAPS -------------------------------------------------------------------
 local map = vim.keymap.set
 -- Buffer Navigation
@@ -121,43 +126,45 @@ vim.diagnostic.config({
 ---- Plugins -------------------------------------------------------------------
 
 vim.pack.add({
-  { src = "https://github.com/neovim/nvim-lspconfig" }, --INFO one copilot commit
-  { src = "https://github.com/nvim-lua/plenary.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.surround" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.comment" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.align" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.splitjoin" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.pairs" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.tabline" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.snippets" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.completion" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.keymap" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-mini/mini.icons" }, --CHECKED: no LLMs
-  { src = "https://github.com/folke/todo-comments.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/folke/zen-mode.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/folke/which-key.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/folke/trouble.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/folke/snacks.nvim" }, --FIX: LLM DETECTED
-  { src = "https://github.com/catgoose/nvim-colorizer.lua" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-tree/nvim-web-devicons" }, --CHECKED: no LLMs
-  { src = "https://github.com/lewis6991/gitsigns.nvim" }, --FIX llm use
-  { src = "https://github.com/karb94/neoscroll.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/chrisgrieser/nvim-rip-substitute" }, --CHECKED: no LLMs
-  { src = "https://github.com/mikavilpas/yazi.nvim" }, --WARN LLM usage
-  { src = "https://github.com/smjonas/live-command.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter" }, --CHECKED: no LLMs
-  { src = "https://github.com/nvim-lualine/lualine.nvim" }, --CHECKED: no LLMs
-  { src = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/stevearc/conform.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/dimtion/guttermarks.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/cosmicbuffalo/eyeliner.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/tpope/vim-abolish" }, --CHECKED: no LLMs
-  { src = "https://github.com/obsidian-nvim/obsidian.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/MagicDuck/grug-far.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/jakobkhansen/journal.nvim" }, --CHECKED: no LLMs
-  { src = "https://github.com/saghen/blink.lib" },
+  { src = "https://github.com/MagicDuck/grug-far.nvim" },
+  { src = "https://github.com/catgoose/nvim-colorizer.lua" },
+  { src = "https://github.com/chrisgrieser/nvim-rip-substitute" },
+  { src = "https://github.com/cosmicbuffalo/eyeliner.nvim" },
+  { src = "https://github.com/dimtion/guttermarks.nvim" },
+  { src = "https://github.com/folke/snacks.nvim" },
+  { src = "https://github.com/folke/todo-comments.nvim" },
+  { src = "https://github.com/folke/trouble.nvim" },
+  { src = "https://github.com/folke/which-key.nvim" },
+  { src = "https://github.com/folke/zen-mode.nvim" },
+  { src = "https://github.com/jakobkhansen/journal.nvim" },
+  { src = "https://github.com/karb94/neoscroll.nvim" },
+  { src = "https://github.com/lewis6991/gitsigns.nvim" },
+  { src = "https://github.com/mikavilpas/yazi.nvim" },
+  { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/nvim-lualine/lualine.nvim" },
+  { src = "https://github.com/nvim-mini/mini.align" },
+  { src = "https://github.com/nvim-mini/mini.comment" },
+  { src = "https://github.com/nvim-mini/mini.completion" },
+  { src = "https://github.com/nvim-mini/mini.icons" },
+  { src = "https://github.com/nvim-mini/mini.keymap" },
+  { src = "https://github.com/nvim-mini/mini.pairs" },
+  { src = "https://github.com/nvim-mini/mini.snippets" },
+  { src = "https://github.com/nvim-mini/mini.splitjoin" },
+  { src = "https://github.com/nvim-mini/mini.surround" },
+  { src = "https://github.com/nvim-mini/mini.cursorword" },
+  { src = "https://github.com/nvim-mini/mini.tabline" },
+  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/obsidian-nvim/obsidian.nvim" },
   { src = "https://github.com/saghen/blink.cmp" },
+  { src = "https://github.com/saghen/blink.lib" },
+  { src = "https://github.com/smjonas/live-command.nvim" },
+  { src = "https://github.com/stevearc/conform.nvim" },
+  { src = "https://github.com/tpope/vim-abolish" },
+  { src = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim" },
 })
+
 require("plugins.pack-ui")
 require("plugins.blink")
 require("plugins.mini_keymap")
@@ -168,6 +175,7 @@ require("mini.pairs").setup()
 require("mini.icons").setup()
 require("mini.comment").setup()
 require("mini.splitjoin").setup()
+require("mini.cursorword").setup({ delay = 0 })
 require("mini.surround").setup()
 require("mini.align").setup()
 require("eyeliner").setup({ dim = true, disabled_buftypes = { "nofile" } })
@@ -176,6 +184,7 @@ require("gitsigns").setup({ signs = { delete = "─" } })
 require("yazi").setup({ yazi_floating_window_border = "rounded", open_for_directories = true })
 require("trouble").setup({ focus = true, multiline = true, keys = { ["<esc>"] = "close" } })
 require("colorizer").setup({ options = { parsers = { names = { enable = false } } } })
+require("conform").setup({ format_on_save = true })
 
 ----  neoscroll -----------------------------------------------------------------
 require("neoscroll").setup({ easing = "sine", use_local_scrolloff = true })
@@ -205,25 +214,6 @@ vim.cmd("cnoreabbrev normal Normal")
 vim.cmd("cnoreabbrev glo Glo")
 vim.cmd("cnoreabbrev global Global")
 
----- conform.nvim --------------------------------------------------------------
-require("conform").setup({
-  log_level = vim.log.levels.TRACE,
-  format_on_save = true,
-  --stylua: ignore
-  formatters_by_ft = {
-    html       = { "prettier" },
-    css        = { "prettier" },
-    yaml       = { "prettier" },
-    json       = { "prettier" },
-  },
-  formatters = {
-    prettier = {
-      prepend_args = { "--tab-width", "2" },
-    },
-  },
-})
-vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-
 ---- treesitter ----------------------------------------------------------------
 require("nvim-treesitter").setup({
   highlight = { enable = true },
@@ -232,6 +222,7 @@ require("nvim-treesitter").setup({
 require("nvim-treesitter").install({
   "caddy", "css", "csv", "desktop", "diff", "dockerfile", "editorconfig", "git_config", "git_rebase", "gitcommit", "gitignore", "html", "jq", "kitty", "regex", "robots_txt", "sql", "tmux", "typst", "sway", "vimdoc", "xml", "yaml",
 })
+
 ---- mini.snippets -------------------------------------------------------------
 local gen_loader = require("mini.snippets").gen_loader
 require("mini.snippets").setup({
@@ -246,7 +237,27 @@ MiniSnippets.start_lsp_server({ match = false })
 ---- obsidian.nvim -------------------------------------------------------------
 vim.g.obsidian_default_keymap = false
 require("obsidian").setup({
-  workspaces = { { name = "Documents", path = "~/Documents", strict = true } },
+  workspaces = {
+    {
+      name = "Documents",
+      path = "~/Documents",
+      strict = true,
+    },
+    -- {
+    --   name = "no-vault",
+    --   path = function()
+    --     return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
+    --   end,
+    --   overrides = {
+    --     notes_subdir = vim.NIL,
+    --     new_notes_location = "current_dir",
+    --     templates = {
+    --       folder = vim.NIL,
+    --     },
+    --     frontmatter = { enabled = false },
+    --   },
+    -- },
+  },
   footer = { format = "{{words}} words  {{backlinks}} backlinks" },
   note_id_func = require("obsidian.builtin").title_id,
   ui = { enable = false },

@@ -2,6 +2,15 @@ local map = vim.keymap.set
 map("n", "<leader>r", "<cmd>lua Snacks.picker.recent()<CR>", { desc = "Recent Files" })
 map("n", "<leader>p", "<cmd>lua Snacks.picker.projects()<CR>", { desc = "Projects" })
 require("snacks").setup({
+  statuscolumn = {
+    enabled = false,
+    left = { "mark", "sign", "git" }, -- priority of signs on the left (high to low)
+    right = { "fold" }, -- priority of signs on the right (high to low)
+    folds = {
+      open = true,
+      git_hl = true,
+    },
+  },
   dashboard = {
     enabled = true,
     width = 40,
@@ -43,7 +52,7 @@ require("snacks").setup({
       projects = {
         dev = { "~/git", "~/Documents/writing/novels" },
         filter = { paths = { ["~/.local/share/nvim/"] = false } },
-        patterns = { ".git", "package.json" },
+        patterns = { ".git", "package.json", ".root" },
         layout = "default",
         projects = {
           "~/.config/nvim",

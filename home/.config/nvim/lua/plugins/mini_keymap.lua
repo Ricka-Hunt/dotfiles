@@ -11,9 +11,10 @@ n_cr_steps[2] = {
 }
 n_cr_steps[3] = {
   condition = function() return require("obsidian.api").cursor_heading() end,
-  action = function() return "zaj" end,
+  action = function() return "za" end,
 }
 n_cr_steps[4] = {
+  -- condition = function() return require("obsidian.api").cursor_checkbox() end,
   condition = function() return vim.bo.filetype == "markdown" end,
   action = function() return "<cmd>ToggleCheckbox<CR>j" end,
 }
@@ -21,7 +22,7 @@ n_cr_steps[4] = {
 local n_s_cr_steps = {}
 n_s_cr_steps[1] = {
   condition = function() return require("obsidian.api").cursor_heading() end,
-  action = function() return "zak" end,
+  action = function() return "zA" end,
 }
 n_s_cr_steps[2] = {
   condition = function() return vim.bo.filetype == "markdown" end,
