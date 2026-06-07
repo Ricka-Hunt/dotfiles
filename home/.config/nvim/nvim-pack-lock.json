@@ -8,6 +8,10 @@
       "rev": "b127d48bf8e9ac9cf41f6e0fbead317503f76558",
       "src": "https://github.com/saghen/blink.lib"
     },
+    "browser-bookmarks.nvim": {
+      "rev": "06cfcb53bf3012792f36eb8eb6cd08f782c9b329",
+      "src": "https://github.com/dhruvmanila/browser-bookmarks.nvim"
+    },
     "bullets.vim": {
       "rev": "3f667eeca58bd4ba411b41edefef51e7fed1a2b1",
       "src": "https://github.com/bullets-vim/bullets.vim"
@@ -76,10 +80,6 @@
       "rev": "fc87ba6554f182161d9a4bab5017c575571f000f",
       "src": "https://github.com/nvim-mini/mini.comment"
     },
-    "mini.completion": {
-      "rev": "04abe6fc7860858785ba63c435d76bf5b8b64b5f",
-      "src": "https://github.com/nvim-mini/mini.completion"
-    },
     "mini.cursorword": {
       "rev": "a01471856e462144ea53972f22a67e790be68ee6",
       "src": "https://github.com/nvim-mini/mini.cursorword"
@@ -132,10 +132,6 @@
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
-    "nvim-ufo": {
-      "rev": "ab3eb124062422d276fae49e0dd63b3ad1062cfc",
-      "src": "https://github.com/kevinhwang91/nvim-ufo"
-    },
     "nvim-web-devicons": {
       "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
@@ -147,14 +143,6 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
-    },
-    "pretty-fold.nvim": {
-      "rev": "1eb18f228972e86b7b8f5ef33ca8091e53fb1e49",
-      "src": "https://github.com/bbjornstad/pretty-fold.nvim"
-    },
-    "promise-async": {
-      "rev": "119e8961014c9bfaf1487bf3c2a393d254f337e2",
-      "src": "https://github.com/kevinhwang91/promise-async"
     },
     "rainbow-delimiters.nvim": {
       "rev": "a798325b7f36acc62741d1029930a7b96d4dd4bf",
@@ -168,9 +156,9 @@
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
     },
-    "statuscol.nvim": {
-      "rev": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc",
-      "src": "https://github.com/luukvbaal/statuscol.nvim"
+    "sqlite.lua": {
+      "rev": "50092d60feb242602d7578398c6eb53b4a8ffe7b",
+      "src": "https://github.com/kkharji/sqlite.lua"
     },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",

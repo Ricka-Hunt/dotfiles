@@ -1,7 +1,6 @@
 --- COLORSCHEME ---------------------------------------------------------------
 vim.pack.add({ "https://codeberg.org/trickyni/desert-witch.nvim" })
 vim.cmd.colorscheme("desert-witch")
-vim.api.nvim_set_hl(0, "Folded", { fg = "#6b6055", bg = "#43392d" })
 ---- OPTIONS -------------------------------------------------------------------
 --stylua: ignore start
 vim.opt.termguicolors  = true
@@ -84,7 +83,7 @@ map({ "n", "x" }, "<leader>s", "<Cmd>RipSubstitute<CR>", { desc = "Find/Replace"
 map("n", "<leader>d", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics" })
 map("n", "<leader>g", "<cmd>Gitsigns toggle_linehl<CR>", { desc = "Toggle Diff" })
 map("n", "grf", "<cmd>lua require('conform').format()<CR>", { desc = "Format buffer" })
-map("n", "grl", "<cmd>Trouble lsp_references<CR>", { desc = "references" })
+map("n", "grr", "<cmd>Trouble lsp_references<CR>", { desc = "references" })
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP go to definition" })
 
 ---- Behaviors -----------------------------------------------------------------
@@ -126,6 +125,8 @@ vim.diagnostic.config({
 ---- Plugins -------------------------------------------------------------------
 
 vim.pack.add({
+  { src = "https://github.com/dhruvmanila/browser-bookmarks.nvim" },
+  { src = "https://github.com/kkharji/sqlite.lua" },
   { src = "https://github.com/MagicDuck/grug-far.nvim" },
   { src = "https://github.com/catgoose/nvim-colorizer.lua" },
   { src = "https://github.com/chrisgrieser/nvim-rip-substitute" },
@@ -145,7 +146,6 @@ vim.pack.add({
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/nvim-mini/mini.align" },
   { src = "https://github.com/nvim-mini/mini.comment" },
-  { src = "https://github.com/nvim-mini/mini.completion" },
   { src = "https://github.com/nvim-mini/mini.icons" },
   { src = "https://github.com/nvim-mini/mini.keymap" },
   { src = "https://github.com/nvim-mini/mini.pairs" },
@@ -318,4 +318,9 @@ vim.g.rainbow_delimiters = {
 require("zen-mode").setup({
   window = { width = 100, backdrop = 1, options = { signcolumn = "no" } },
   plugins = { options = { laststatus = 0 }, gitsigns = { enabled = true } },
+})
+
+---- browser bookmarks ---------------------------------------------------------
+require("browser_bookmarks").setup({
+  selected_browser = "buku",
 })
