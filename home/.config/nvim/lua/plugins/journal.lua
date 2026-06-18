@@ -4,8 +4,13 @@ map("n", "<leader>on", "<cmd>Journal +1<CR>", { desc = "Tomorrow's daily note" }
 map("n", "<leader>oy", "<cmd>Journal -1<CR>", { desc = "Yesterday's daily note" })
 
 local weekday_format = "%Y/%m-%B/daily/%Y-%m-%d__%A"
-local weekday_template =
-  "---\nid: %Y-%m-%d__%A\naliases: []\ntags:\n - daily-notes\n---\n\n# %Y-%m-%d__%A\n\n## Achievements\n\n## Reflect\n\n## Do\n\n## Observations\n\n## Gratitude\n"
+local weekday_template = "---\ntags: daily-notes\n---\n\n"
+  .. "# %Y-%m-%d__%A\n\n"
+  .. "## Achievements\n\n"
+  .. "## Do\n\n"
+  .. "## Observations\n\n"
+  .. "## Gratitude\n"
+
 require("journal").setup({
   filetype = "md",
   root = "~/Documents/journal",
@@ -68,7 +73,11 @@ require("journal").setup({
           local this_sat = date:relative({ day = 6 })
           local week_end = os.date("%b %-d", os.time(this_sat.date))
           local week_nr = tonumber(os.date("%U", os.time(this_sat.date)) + 1)
-          return "# Week " .. week_nr .. " - %b %-d -> " .. week_end .. "\n"
+          return "---\ntags: weekly-notes\n---\n\n# Week "
+            .. week_nr
+            .. " - %b %-d -> "
+            .. week_end
+            .. "\n\n## Achievements\n\n## Reflect\n\n## Observations"
         end,
         frequency = { day = 7 },
         date_modifier = "last sunday",

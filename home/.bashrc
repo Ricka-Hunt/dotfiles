@@ -195,3 +195,4 @@ alias termdown='termdown -f doh'
 # }
 alias timer='qs ipc call timer set'
 alias tstop='qs ipc call timer stop'
+alias woman='man'

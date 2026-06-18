@@ -46,6 +46,9 @@ window-rule { //bluetui
   open-floating true
   default-window-height { proportion 0.6; }
   default-column-width { proportion 0.9; }
+  border {
+    active-color "#3eccbe"
+  }
 }
 
 window-rule { //steam notification fix
