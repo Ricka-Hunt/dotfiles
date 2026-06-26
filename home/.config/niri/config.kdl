@@ -418,6 +418,7 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
     Mod+P {spawn "~/.local/bin/fuzzel-palette/fuzzel_palette.js"; }
+    Mod+Slash {spawn "~/.local/bin/fuzzel-kaomoji/fuzzel_kaomoji.sh"; }
     Mod+Delete hotkey-overlay-title="Dismiss Notifications"{ spawn-sh "makoctl dismiss -a"; }
     Mod+B repeat=false hotkey-overlay-title="Bluetooth" { spawn "bluetui-wrapper.sh"; }
     Mod+M repeat=false hotkey-overlay-title="Music" { spawn "rmpc-wrapper.sh"; }

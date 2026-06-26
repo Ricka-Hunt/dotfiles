@@ -60,3 +60,10 @@ window-rule { // Firefox picture-in-picture player as floating by default.
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
+
+window-rule {
+    match app-id="steam_app_default"
+    open-maximized true
+    open-fullscreen true
+    default-column-width { proportion 1.0; }
+}
