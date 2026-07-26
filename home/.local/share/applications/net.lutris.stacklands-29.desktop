@@ -1,8 +1,0 @@
-
-[Desktop Entry]
-Type=Application
-Name=stacklands
-Icon=lutris_stacklands
-Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/29
-Categories=Game
-TryExec=lutris

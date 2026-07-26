@@ -1,8 +1,0 @@
-
-[Desktop Entry]
-Type=Application
-Name=lorelei-and-the-Laser-Eyes
-Icon=lutris_lorelei-and-the-laser-eyes
-Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/17
-Categories=Game
-TryExec=lutris

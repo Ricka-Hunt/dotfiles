@@ -1,8 +1,0 @@
-
-[Desktop Entry]
-Type=Application
-Name=Hyper Light Drifter
-Icon=lutris_hyper-light-drifter
-Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/15
-Categories=Game
-TryExec=lutris

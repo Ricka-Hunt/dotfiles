@@ -1,8 +1,0 @@
-
-[Desktop Entry]
-Type=Application
-Name=NieR: Automata
-Icon=lutris_nier-automata
-Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/6
-Categories=Game
-TryExec=lutris

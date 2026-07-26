@@ -1,8 +1,0 @@
-
-[Desktop Entry]
-Type=Application
-Name=Clair Obscur: Expedition 33
-Icon=lutris_clair-obscur-expedition-33
-Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1
-Categories=Game
-TryExec=lutris

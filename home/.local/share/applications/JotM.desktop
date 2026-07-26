@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Jupiter of the Monkey
-GenericName=Headphones
-Exec=bluetoothctl connect AC:80:0A:2E:C9:07
-Icon=my-phones
-Type=Application
-Categories=phones,headphones,jotm;

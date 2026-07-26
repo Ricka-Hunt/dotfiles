@@ -1,3 +1,4 @@
+vim.api.nvim_set_hl(0, "RenderMarkdownInlineHighlight", { bg = "#f8e2a0", fg = "#3b3228" })
 ---- Options -------------------------------------------------------------------
 vim.opt_local.spell = true -- spellcheck
 vim.opt_local.shiftwidth = 2 -- ensures tabs == 2 whitespaces

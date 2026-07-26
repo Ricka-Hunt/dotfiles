@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
-sudo systemctl --user restart pipewire pipewire-pulse
+sudo systemctl --user restart pipewire pipewire-pulse mpd mpDris2
 pkill quickshell
 quickshell &

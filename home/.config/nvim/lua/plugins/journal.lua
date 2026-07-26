@@ -4,7 +4,7 @@ map("n", "<leader>on", "<cmd>Journal +1<CR>", { desc = "Tomorrow's daily note" }
 map("n", "<leader>oy", "<cmd>Journal -1<CR>", { desc = "Yesterday's daily note" })
 
 local weekday_format = "%Y/%m-%B/daily/%Y-%m-%d__%A"
-local weekday_template = "---\ntags: daily-notes\n---\n\n"
+local weekday_template = "---\nid: %Y-%m-%d\ntags: daily-notes\n---\n\n"
   .. "# %Y-%m-%d__%A\n\n"
   .. "## Achievements\n\n"
   .. "## Do\n\n"
@@ -13,7 +13,7 @@ local weekday_template = "---\ntags: daily-notes\n---\n\n"
 
 require("journal").setup({
   filetype = "md",
-  root = "~/Documents/journal",
+  root = "~/Documents/90-99 journal",
   date_format = "%Y-%m-%d",
   autocomplete_date_modifier = "end",
   journal = { --Default journal format (same as day)

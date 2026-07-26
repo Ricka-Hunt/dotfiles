@@ -40,6 +40,9 @@ gestures {
   hot-corners {
     top-right
   }
+  dnd-edge-view-scroll{
+    delay-ms 800
+  }
 }
 
 output "eDP-1" {

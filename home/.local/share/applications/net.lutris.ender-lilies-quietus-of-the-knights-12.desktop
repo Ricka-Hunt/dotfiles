@@ -1,8 +1,0 @@
-
-[Desktop Entry]
-Type=Application
-Name=Ender Lilies: Quietus of the Knights
-Icon=lutris_ender-lilies-quietus-of-the-knights
-Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/12
-Categories=Game
-TryExec=lutris
