@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+buku -p -f 4 |
+  awk -F'\t' '{ printf "%s\t%s\t%s\n  %s\0", $1, $2, $3, $4 }' |
+  fzf --read0 \
+    --delimiter='\t' \
+    --gap --highlight-line \
+    --preview 'buku -p {1}' --preview-window=wrap |
+  head -n1 | cut -f2 |
+  xargs -r xdg-open
