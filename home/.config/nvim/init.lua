@@ -163,10 +163,13 @@ vim.pack.add({
   { src = "https://github.com/stevearc/conform.nvim" },
   { src = "https://github.com/tpope/vim-abolish" },
   { src = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim" },
+  { src = "https://codeberg.org/cryptomilk/nvim-pack-ui" },
+  { src = "https://github.com/bngarren/checkmate.nvim" }, --CHECKED: no LLMs
 })
 
-require("plugins.pack-ui")
+require("pack-ui")
 require("plugins.blink")
+require("plugins.checkmate")
 require("plugins.mini_keymap")
 require("plugins.journal")
 require("plugins.lualine")
@@ -191,15 +194,6 @@ require("neoscroll").setup({ easing = "sine", use_local_scrolloff = true })
 map("n", "<PageUp>", "<cmd>lua require('neoscroll').ctrl_u({duration=300})<CR>", { remap = true })
 map("n", "<PageDown>", "<cmd>lua require('neoscroll').ctrl_d({duration=300})<CR>", { remap = true })
 
----- grug-gar ------------------------------------------------------------------
-require("grug-far").setup({
-  keymaps = {
-    replace = { n = "<C-CR>" },
-    close = { n = "q" },
-  },
-})
-map("n", "<leader>f", "<cmd>GrugFar<CR>", { desc = "Grug-Far" })
-
 ---- live command -------------------------------------------------------------
 require("live-command").setup({
   enable_highlighting = true,
@@ -220,17 +214,17 @@ require("nvim-treesitter").setup({
 })
 --stylua: ignore
 require("nvim-treesitter").install({
-  "caddy", "css", "csv", "desktop", "diff", "dockerfile", "editorconfig", "git_config", "git_rebase", "gitcommit", "gitignore", "html", "jq", "kitty", "regex", "robots_txt", "sql", "tmux", "typst", "sway", "vimdoc", "xml", "yaml",
+  "caddy", "css", "csv", "desktop", "diff", "dockerfile", "editorconfig", "git_config", "git_rebase", "gitcommit", "gitignore", "html", "jq", "kitty", "regex", "robots_txt", "sql", "typst", "sway", "vimdoc", "xml", "yaml",
 })
 
 ---- mini.snippets -------------------------------------------------------------
 local gen_loader = require("mini.snippets").gen_loader
 require("mini.snippets").setup({
-  snippets = {
-    -- gen_loader.from_file("~/.config/nvim/snippets/global.json"),
-    gen_loader.from_lang(),
-  },
-  mappings = { stop = "<C-c>" },
+  --snippets = {
+  ---- gen_loader.from_file("~/.config/nvim/snippets/global.json"),
+  --gen_loader.from_lang(),
+  --},
+  --mappings = { stop = "<C-c>" },
 })
 MiniSnippets.start_lsp_server({ match = false })
 
@@ -286,7 +280,7 @@ require("which-key").add({
   { "<leader>o", group = "Notes" },
 })
 
----- todo-comments -------------------------------------------------------------
+-- todo-comments -------------------------------------------------------------
 require("todo-comments").setup({
   keywords = {
     FIX = { icon = "󰅜" },
@@ -300,7 +294,7 @@ require("todo-comments").setup({
   colors = { pass = { "DiagnosticOk", "#92a650" } },
 })
 
----- mini.tabline --------------------------------------------------------------
+-- mini.tabline --------------------------------------------------------------
 require("mini.tabline").setup({
   format = function(buf_id, label)
     local suffix = vim.bo[buf_id].modified and "+ " or ""
@@ -308,19 +302,14 @@ require("mini.tabline").setup({
   end,
 })
 
----- rainbow-delimiters --------------------------------------------------------
+-- rainbow-delimiters --------------------------------------------------------
 vim.g.rainbow_delimiters = {
   highlight = { "RainbowDelimiterRed", "RainbowDelimiterYellow", "RainbowDelimiterBlue", "RainbowDelimiterOrange" },
   blacklist = { "html" },
 }
 
----- Zen-Mode ------------------------------------------------------------------
+-- Zen-Mode ------------------------------------------------------------------
 require("zen-mode").setup({
   window = { width = 100, backdrop = 1, options = { signcolumn = "no" } },
   plugins = { options = { laststatus = 0 }, gitsigns = { enabled = true } },
-})
-
----- browser bookmarks ---------------------------------------------------------
-require("browser_bookmarks").setup({
-  selected_browser = "buku",
 })

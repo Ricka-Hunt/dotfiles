@@ -13,27 +13,39 @@ n_cr_steps[3] = {
   condition = function() return require("obsidian.api").cursor_heading() end,
   action = function() return "za" end,
 }
+-- n_cr_steps[4] = {
+--   -- condition = function() return require("obsidian.api").cursor_checkbox() end,
+--   condition = function() return vim.bo.filetype == "markdown" end,
+--   action = function() return "<cmd>ToggleCheckbox<CR>j" end,
+-- }
+
 n_cr_steps[4] = {
   -- condition = function() return require("obsidian.api").cursor_checkbox() end,
   condition = function() return vim.bo.filetype == "markdown" end,
-  action = function() return "<cmd>ToggleCheckbox<CR>j" end,
+  action = function() return "<cmd>Checkmate toggle<CR>" end,
 }
+
 -- NORMAL mode Shift-Enter key
 local n_s_cr_steps = {}
 n_s_cr_steps[1] = {
   condition = function() return require("obsidian.api").cursor_heading() end,
   action = function() return "zA" end,
 }
+-- n_s_cr_steps[2] = {
+--   condition = function() return vim.bo.filetype == "markdown" end,
+--   action = function() return "<cmd>ToggleCheckbox<CR>k" end,
+-- }
+
 n_s_cr_steps[2] = {
   condition = function() return vim.bo.filetype == "markdown" end,
-  action = function() return "<cmd>ToggleCheckbox<CR>k" end,
+  action = function() return "<cmd>Checkmate toggle<CR>" end,
 }
 
 -- INSERT mode enter key
 local i_cr_steps = {"blink_accept",nil,"minipairs_cr"}
 i_cr_steps[2] = {
   condition = function() return vim.bo.filetype == "markdown" end,
-  action = function() return "<cmd>InsertNewBullet<CR>" end,
+  action = function() return "<cmd>Checkmate create<CR>" end,
 }
 
 local multistep = require("mini.keymap").map_multistep

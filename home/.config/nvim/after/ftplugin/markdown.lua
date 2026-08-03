@@ -1,4 +1,4 @@
-vim.api.nvim_set_hl(0, "RenderMarkdownInlineHighlight", { bg = "#f8e2a0", fg = "#3b3228" })
+vim.api.nvim_set_hl(0, "RenderMarkdownInlineHighlight", { fg = "#f8e2a0", bg = "#4c4134", reverse = true })
 ---- Options -------------------------------------------------------------------
 vim.opt_local.spell = true -- spellcheck
 vim.opt_local.shiftwidth = 2 -- ensures tabs == 2 whitespaces
@@ -22,6 +22,7 @@ map({ "n", "v" }, "k", "gk", { remap = false, buffer = true, silent = true })
 map({ "n", "v" }, "j", "gj", { remap = false, buffer = true, silent = true })
 map("n", "gb", "<cmd>Obsidian backlinks<CR>", { desc = "Backlinks", remap = false })
 map("n", "o", "<cmd>InsertNewBullet<CR>", { remap = false, buffer = true })
+-- map("n", "o", "<cmd>Checkmate create<CR>", { remap = false, buffer = true })
 map("i", "<C-->", "—")
 require("mini.keymap").map_combo("i", "<C--><C-->", "<BS><BS>–", { delay = 300 })
 map(
@@ -48,6 +49,7 @@ map("n", "z2", "<cmd>set foldlevel=1<CR>", { buffer = true, desc = "Fold headers
 map("n", "z3", "<cmd>set foldlevel=2<CR>", { buffer = true, desc = "Fold headers to h3" })
 map("n", "z4", "<cmd>set foldlevel=3<CR>", { buffer = true, desc = "Fold headers to h4" })
 map("n", "z5", "<cmd>set foldlevel=4<CR>", { buffer = true, desc = "Fold headers to h5" })
+
 ---- Custom Syntax -------------------------------------------------------------
 vim.cmd('syntax region ScarletText matchgroup=Conceal start="+R|" end="|+" concealends')
 vim.cmd('syntax region MossText matchgroup=Conceal start="+G|" end="|+" concealends')
@@ -72,35 +74,27 @@ require("mini.surround").config.custom_surroundings = {
 vim.g.render_markdown_config = {
   render_modes = true,
   completions = { lsp = { enabled = true } },
+  -- checkbox = { enabled = false },
   checkbox = {
-    checked = { icon = "󰫈", scope_highlight = "RenderMarkdownCheckedItem" },
-    unchecked = { icon = "󰋙", scope_highlight = nil },
+    checked = { icon = "󰫈", highlight = "Bg25Text" }, --, scope_highlight = "RenderMarkdownCheckedItem" },
+    unchecked = { icon = "󰋙" }, -- scope_highlight = nil },
     custom = {
-      todo = {
-        raw = "[-]",
-        rendered = "󰁘",
-        highlight = "RenderMarkdownTodo",
-        scope_highlight = "RenderMarkdownTodo",
-      },
-      sixth = { raw = "[a]", rendered = "󰫃", highlight = "RenderMarkdownBullet" },
-      third = { raw = "[b]", rendered = "󰫄", highlight = "RenderMarkdownBullet" },
-      half = { raw = "[o]", rendered = "󰫅", highlight = "RenderMarkdownBullet" },
-      twothirds = { raw = "[d]", rendered = "󰫆", highlight = "RenderMarkdownBullet" },
-      fivesix = { raw = "[e]", rendered = "󰫇", highlight = "RenderMarkdownBullet" },
-      ongoing = { raw = "[@]", rendered = "󰛡", highlight = "Bg25Text", scope_highlight = "Bg25Text" },
-      focus = { raw = "[!]", rendered = "", highlight = "DiagnosticError", scope_highlight = "DiagnosticError" },
-      canceled = {
-        raw = "[N]",
-        rendered = "󰫊",
-        highlight = "ScarletText",
-        scope_highlight = "DiagnosticUnnecessary",
-      },
+      ongoing = { raw = "[-]", rendered = "󰁘", highlight = "CeladonText" },
+      pending = { raw = "[@]", rendered = "󱃲", highlight = "MossText" },
+      cancelled = { raw = "[#]", rendered = "󰫊", highlight = "ScarletText" },
+      important = { raw = "[!]", rendered = "", highlight = "DiagnosticError" },
+      -- sixth = { raw = "[a]", rendered = "󰫃", highlight = "RenderMarkdownBullet" },
+      -- third = { raw = "[b]", rendered = "󰫄", highlight = "RenderMarkdownBullet" },
+      -- half = { raw = "[o]", rendered = "󰫅", highlight = "RenderMarkdownBullet" },
+      -- twothirds = { raw = "[d]", rendered = "󰫆", highlight = "RenderMarkdownBullet" },
+      -- fivesix = { raw = "[e]", rendered = "󰫇", highlight = "RenderMarkdownBullet" },
     },
   },
   link = {
     footnote = { superscript = false },
     wiki = { scope_highlight = "RenderMarkdownWikiLinkText" },
   },
+  -- bullet = { enabled = false },
   bullet = { icons = { "󰆧" }, right_pad = 0 },
   pipe_table = {
     preset = "round",
@@ -135,7 +129,7 @@ vim.g.render_markdown_config = {
   html = { comment = { conceal = false } },
 }
 
-vim.g.bullets_checkbox_markers = " abodeX"
+-- vim.g.bullets_checkbox_markers = " abodeX"
 vim.g.bullets_set_mappings = 0
 require("conform").formatters_by_ft.markdown = { "rumdl" }
 vim.pack.add({
