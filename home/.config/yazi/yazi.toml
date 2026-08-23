@@ -1,25 +1,27 @@
 [opener]
 open = [
-  { run = 'xdg-open "$1"', desc = "Open" },
+  { run = "xdg-open %s1", desc = "Open" },
 ]
-browse = [{ run = 'firefox "$1"', desc = "Firefox" }]
+browse = [{ run = "firefox %s", desc = "Firefox" }]
 extract = [
-  { run = 'ouch d -y "$@"', desc = "Extract" },
+  { run = "ouch d -y %s", desc = "Extract" },
 ]
 edit = [
-  { run = '${EDITOR:-vi} "$@"', desc = "Edit", block = true, for = "unix" },
+  { run = "${EDITOR:-vi} %s", desc = "Edit", block = true, for = "unix" },
 ]
 view = [
-  { run = 'swayimg "$1"', desc = "View" },
+  { run = "swayimg %s", desc = "View" },
 ]
 play = [
-  { run = 'mpv --force-window "$@"', orphan = true, desc = "MPV" },
+  { run = "mpv --force-window %s", orphan = true, desc = "MPV" },
 ]
 
 [open]
 rules = [
   # Text"edit",
+  { url = "*.link.desktop", use = ["browse", "edit"] },
   { mime = "text/html", use = ["edit", "browse", "open"] },
+  { url = "*.desktop", use = ["open", "edit", "browse"] },
   { mime = "text/*", use = ["edit", "open"] },
   { mime = "application/{javascript,json}", use = "edit" },
   { mime = "inode/{empty,x-empty}", use = "edit" },

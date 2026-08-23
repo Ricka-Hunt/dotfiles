@@ -45,7 +45,7 @@ n_s_cr_steps[2] = {
 local i_cr_steps = {"blink_accept",nil,"minipairs_cr"}
 i_cr_steps[2] = {
   condition = function() return vim.bo.filetype == "markdown" end,
-  action = function() return "<cmd>Checkmate create<CR>" end,
+  action = function() return "<cmd>InsertNewBullet<CR>" end,
 }
 
 local multistep = require("mini.keymap").map_multistep
@@ -57,9 +57,9 @@ multistep("n", "<CR>", n_cr_steps)
 multistep("n", "<S-CR>", n_s_cr_steps)
 --stylua: ignore end
 -- double-tap pair for a single instance
-local combo = require("mini.keymap").map_combo
-combo("i", "((", "<BS><BS>(", { delay = 300 })
-combo("i", "[[", "<BS><BS>[", { delay = 300 })
-combo("i", "{{", "<BS><BS>{", { delay = 300 })
-combo("i", '""', '<BS><BS>"', { delay = 300 })
-combo("i", "``", "<BS><BS>`", { delay = 300 })
+-- local combo = require("mini.keymap").map_combo
+-- combo("i", "((", "<BS><BS>(", { delay = 300 })
+-- combo("i", "[[", "<BS><BS>[", { delay = 300 })
+-- combo("i", "{{", "<BS><BS>{", { delay = 300 })
+-- combo("i", '""', '<BS><BS>"', { delay = 300 })
+-- combo("i", "``", "<BS><BS>`", { delay = 300 })

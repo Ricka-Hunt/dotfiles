@@ -3,9 +3,12 @@ cmp.build():wait(60000)
 cmp.setup({
   sources = { default = { "lsp", "path", "snippets", "omni" } },
   keymap = {
-    preset = "none",
+    preset = "default",
+    -- ["<CR>"] = { "accept", "fallback" },
     ["<Up>"] = { "select_prev", "fallback" },
     ["<Down>"] = { "select_next", "fallback" },
+    ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+    ["<C-n>"] = { "select_next", "fallback_to_mappings" },
   },
   fuzzy = { implementation = "rust" },
   appearance = { nerd_font_variant = "mono" },
@@ -38,4 +41,3 @@ cmp.setup({
   },
   signature = { enabled = false },
 })
-

@@ -1,5 +1,7 @@
 require("checkmate").setup({
   enabled = true,
+  list_continuation = false,
+  todo_count_position = "inline",
   files = { "*.md" },
   ui = {
     picker = "snacks",
@@ -12,8 +14,8 @@ require("checkmate").setup({
     -- important = { marker = "", markdown = "!", type = "incomplete" },
     -- pending = { marker = "󱃲", markdown = "@", type = "inactive" },
     -- blocked = { marker = "󰛡", markdown = "#", type = "inactive" },
-    unchecked = { marker = "[ ]" },
-    checked = { marker = "[X]" },
+    unchecked = { marker = "[ ]", order = 1 },
+    checked = { marker = "[X]", order = 2 },
     important = { marker = "[!]", markdown = "!", type = "incomplete" },
     cancelled = { marker = "[#]", markdown = "#", type = "complete" },
     ongoing = { marker = "[-]", markdown = "-", type = "incomplete" },
@@ -22,6 +24,17 @@ require("checkmate").setup({
   metadata = {
     pending = {
       style = { fg = "#c1a387", bg = "#5d4f40", bold = true },
+      on_add = function(todo)
+        require("checkmate").set_todo_state(todo, "pending")
+      end,
+      on_remove = function(todo)
+        require("checkmate").set_todo_state(todo, "unchecked")
+      end,
+      get_value = function()
+        return "INSERT REASON"
+      end,
+      jump_to_on_insert = "value",
+      select_on_insert = true,
     },
     project = {
       aliases = { "pro", "proj" },
@@ -68,6 +81,23 @@ require("checkmate").setup({
       select_on_insert = true,
     },
   },
+  keys = {
+    ["<leader>tf"] = { rhs = "<cmd>Checkmate select_todo<CR>", desc = "Pick todo items", modes = { "n" } },
+    ["<leader>tp"] = { rhs = "<cmd>Checkmate metadata toggle pri<CR>", desc = "Toggle 'priority' tag", modes = { "n" } },
+    ["<leader>td"] = { rhs = "<cmd>Checkmate metadata toggle done<CR>", desc = "Toggle 'done' tag", modes = { "n" } },
+    ["<leader>t@"] = { "<cmd>Checkmate metadata toggle pending<CR>", "Toggle 'pending' tag", { "n" } },
+    ["<leader>t#"] = { "<cmd>lua require('checkmate').toggle('cancelled')<CR>", "Set item to 'cancelled'", { "n" } },
+    ["<leader>t-"] = {
+      rhs = "<cmd>lua require('checkmate').toggle('ongoing')<CR>",
+      desc = "Set item to 'ongoing'",
+      modes = { "n" },
+    },
+    ["<leader>t!"] = {
+      rhs = "<cmd>lua require('checkmate').toggle('important')<CR>",
+      desc = "Set item to 'important'",
+      modes = { "n" },
+    },
+  },
   style = {
     CheckmateUncheckedMarker = { bold = false },
     CheckmateCheckedMarker = { fg = "#6b6055", bold = false },
@@ -82,29 +112,4 @@ require("checkmate").setup({
     CheckmateOngoingMainContent = { fg = "#ace1af" },
     CheckmateTodoCountIndicator = { fg = "#f8e2a0" },
   },
-  keys = {
-    ["<leader>tf"] = { rhs = "<cmd>Checkmate select_todo<CR>", modes = { "n" } },
-    ["<leader>t#"] = {
-      rhs = "<cmd>lua require('checkmate').toggle('cancelled')<CR>",
-      desc = "Set item to 'cancelled'",
-      modes = { "n" },
-    },
-    ["<leader>t@"] = {
-      rhs = "<cmd>lua require('checkmate').toggle('pending')<CR>",
-      desc = "Set item to 'pending'",
-      modes = { "n" },
-    },
-    ["<leader>t-"] = {
-      rhs = "<cmd>lua require('checkmate').toggle('ongoing')<CR>",
-      desc = "Set item to 'ongoing'",
-      modes = { "n" },
-    },
-    ["<leader>t!"] = {
-      rhs = "<cmd>lua require('checkmate').toggle('important')<CR>",
-      desc = "Set item to 'important'",
-      modes = { "n" },
-    },
-  },
-
-  todo_count_position = "inline",
 })

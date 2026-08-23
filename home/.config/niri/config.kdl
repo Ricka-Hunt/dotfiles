@@ -10,7 +10,7 @@ environment {
 input {
     keyboard {
         xkb {
-            layout "us,il"
+            layout "us"
             options "caps:escape,grp:alt_shift_toggle,compose:ralt"
         }
     }
@@ -27,6 +27,7 @@ input {
     }
     trackpoint {
       accel-profile "flat"
+      accel-speed 0.0
     }
 }
 
@@ -383,8 +384,8 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+V       { toggle-window-floating; }
+    Mod+V { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,

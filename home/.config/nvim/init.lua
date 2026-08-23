@@ -1,4 +1,11 @@
 --- COLORSCHEME ---------------------------------------------------------------
+vim.fn.setcellwidths({
+  { 0xF1900, 0xF1989, 2 },
+  { 0xF1990, 0xF1991, 1 },
+  { 0xF1992, 0xF1996, 2 },
+  { 0xF1997, 0xF1998, 1 },
+  { 0xF1999, 0xF19FF, 2 },
+})
 vim.pack.add({ "https://codeberg.org/trickyni/desert-witch.nvim" })
 vim.cmd.colorscheme("desert-witch")
 ---- OPTIONS -------------------------------------------------------------------
@@ -29,7 +36,7 @@ vim.opt.signcolumn     = "yes:1"   -- gutter to the left of the number column
 vim.opt.inccommand     = "nosplit" -- shows find/replace results live
 vim.opt.backspace      = { "start", "eol", "indent" }
 vim.opt.list           = true      -- show trailing whitespaces and tab characters
-vim.opt.listchars      = { tab = "» ", trail = "·", nbsp = "␣"}
+-- vim.opt.listchars      = { tab = "» ", trail = "·", nbsp = "␣"}
 vim.opt.timeoutlen     = 300       --timeout on keys with followups
 vim.opt.winborder      = "rounded" --border for floating windows
 vim.opt.pumborder      = "rounded" --border for popup menus
@@ -41,12 +48,13 @@ vim.opt.shortmess:append("Swl")
 vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.fillchars:append({foldsep="│",foldopen="┬",foldclose="╞",foldinner="┆"})
+-- vim.opt.fillchars:append({foldsep="│",foldopen="┬",foldclose="╞",foldinner="┆"})
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 --stylua: ignore end
 --
 ---- KEYMAPS -------------------------------------------------------------------
 local map = vim.keymap.set
+-- map("i", "<S-CR>", "<CR>", { remap = false, silent = true })
 -- Buffer Navigation
 map("n", "<C-n>", "<cmd>enew<CR>", { desc = "New buffer" })
 map("n", "<C-]>", "<cmd>bn<CR>", { desc = "Next buffer" })
@@ -125,9 +133,6 @@ vim.diagnostic.config({
 ---- Plugins -------------------------------------------------------------------
 
 vim.pack.add({
-  { src = "https://github.com/dhruvmanila/browser-bookmarks.nvim" },
-  { src = "https://github.com/kkharji/sqlite.lua" },
-  { src = "https://github.com/MagicDuck/grug-far.nvim" },
   { src = "https://github.com/catgoose/nvim-colorizer.lua" },
   { src = "https://github.com/chrisgrieser/nvim-rip-substitute" },
   { src = "https://github.com/cosmicbuffalo/eyeliner.nvim" },
@@ -164,7 +169,8 @@ vim.pack.add({
   { src = "https://github.com/tpope/vim-abolish" },
   { src = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim" },
   { src = "https://codeberg.org/cryptomilk/nvim-pack-ui" },
-  { src = "https://github.com/bngarren/checkmate.nvim" }, --CHECKED: no LLMs
+  { src = "https://github.com/bngarren/checkmate.nvim" },
+  -- { src = "https://github.com/3rd/image.nvim" },
 })
 
 require("pack-ui")
@@ -181,7 +187,7 @@ require("mini.splitjoin").setup()
 require("mini.cursorword").setup({ delay = 0 })
 require("mini.surround").setup()
 require("mini.align").setup()
-require("eyeliner").setup({ dim = true, disabled_buftypes = { "nofile" } })
+-- require("eyeliner").setup({ dim = true, disabled_buftypes = { "nofile" } })
 require("rip-substitute").setup({ prefill = { normal = false } })
 require("gitsigns").setup({ signs = { delete = "─" } })
 require("yazi").setup({ yazi_floating_window_border = "rounded", open_for_directories = true })
@@ -220,11 +226,11 @@ require("nvim-treesitter").install({
 ---- mini.snippets -------------------------------------------------------------
 local gen_loader = require("mini.snippets").gen_loader
 require("mini.snippets").setup({
-  --snippets = {
-  ---- gen_loader.from_file("~/.config/nvim/snippets/global.json"),
-  --gen_loader.from_lang(),
-  --},
-  --mappings = { stop = "<C-c>" },
+  snippets = {
+    -- gen_loader.from_file("~/.config/nvim/snippets/global.json"),
+    gen_loader.from_lang(),
+  },
+  mappings = { stop = "<C-c>" },
 })
 MiniSnippets.start_lsp_server({ match = false })
 
@@ -236,21 +242,8 @@ require("obsidian").setup({
       name = "Documents",
       path = "~/Documents",
       strict = true,
+      root = "~/Documents",
     },
-    -- {
-    --   name = "no-vault",
-    --   path = function()
-    --     return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
-    --   end,
-    --   overrides = {
-    --     notes_subdir = vim.NIL,
-    --     new_notes_location = "current_dir",
-    --     templates = {
-    --       folder = vim.NIL,
-    --     },
-    --     frontmatter = { enabled = false },
-    --   },
-    -- },
   },
   footer = { format = "{{words}} words  {{backlinks}} backlinks" },
   note_id_func = require("obsidian.builtin").title_id,
@@ -258,6 +251,17 @@ require("obsidian").setup({
   legacy_commands = false,
   checkbox = { enabled = false },
   daily_notes = { enabled = false },
+  attachments = { folder = "./assets" },
+  templates = {
+    folder = ".tmp",
+    customizations = {
+      voice_lesson = {
+        note_id_func = function(title)
+          return title .. "_voice_lesson"
+        end,
+      },
+    },
+  },
 })
 map("n", "<leader>of", "<cmd>Obsidian quick_switch<CR>", { desc = "Pick from vault" })
 map("n", "<leader>o#", "<cmd>Obsidian tags<CR>", { desc = "Pick from vault" })

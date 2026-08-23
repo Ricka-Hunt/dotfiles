@@ -1,4 +1,24 @@
 [[mgr.prepend_keymap]]
+on = "Q"
+run = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
+
+[[mgr.prepend_keymap]]
+on = "!"
+run = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
+
+[[mgr.prepend_keymap]]
+on = "<C-Enter>"
+run = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
+
+[[mgr.prepend_keymap]]
+on = ["g", "o"]
+run = "cd ~/Documents"
+desc = "Cd to ~/Documents"
+
+[[mgr.prepend_keymap]]
 on = ["c", "m"]
 run = "plugin chmod"
 desc = "Chmod on selected files"
@@ -27,11 +47,6 @@ desc = "Restore last deleted files/folders"
 on = ["1"]
 run = "plugin relative-motions 1"
 desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = "!"
-run = 'shell "$SHELL" --block'
-desc = "Open $SHELL here"
 
 [[mgr.prepend_keymap]]
 on = ["2"]

@@ -47,7 +47,12 @@ echo -e -n "\x1b[\x35 q" # changes to blinking bar
 #   paths
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/lib/qt6/bin/:$PATH"
-#
+
+#   browser
+export BROWSER=firefox
+
+#   terminal
+export TERMINAL=kitty
 #   pager
 export MANPAGER='nvim +Man!'
 export PAGER=less
@@ -199,3 +204,6 @@ alias woman='man'
 alias wiki='wiki-tui'
 # alias plate='fd "\[ACTIVE\]" --format {/} -C ~/Documents'
 alias plate='fd "\[ACTIVE\]" -C ~/Documents'
+
+# toki pona
+export XMODIFIERS=@im=fcitx

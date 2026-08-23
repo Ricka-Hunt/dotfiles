@@ -1,4 +1,3 @@
-vim.api.nvim_set_hl(0, "RenderMarkdownInlineHighlight", { fg = "#f8e2a0", bg = "#4c4134", reverse = true })
 ---- Options -------------------------------------------------------------------
 vim.opt_local.spell = true -- spellcheck
 vim.opt_local.shiftwidth = 2 -- ensures tabs == 2 whitespaces
@@ -10,6 +9,7 @@ vim.cmd("digraph -- 8212")
 ---- Treesitter ---------------------------------------------------------------
 require("nvim-treesitter").install({ "markdown", "markdown_inline", "yaml" })
 vim.treesitter.start()
+vim.bo.syntax = "on"
 
 ---- LSP -----------------------------------------------------------------------
 -- vim.lsp.enable({ "ltex_plus", "rumdl", "markdown_oxide" })
@@ -51,13 +51,16 @@ map("n", "z4", "<cmd>set foldlevel=3<CR>", { buffer = true, desc = "Fold headers
 map("n", "z5", "<cmd>set foldlevel=4<CR>", { buffer = true, desc = "Fold headers to h5" })
 
 ---- Custom Syntax -------------------------------------------------------------
-vim.cmd('syntax region ScarletText matchgroup=Conceal start="+R|" end="|+" concealends')
-vim.cmd('syntax region MossText matchgroup=Conceal start="+G|" end="|+" concealends')
-vim.cmd('syntax region SandText matchgroup=Conceal start="+S|" end="|+" concealends')
-vim.cmd('syntax region SaffronText matchgroup=Conceal start="+Y|" end="|+" concealends')
-vim.cmd('syntax region OrangeText matchgroup=Conceal start="+O|" end="|+" concealends')
-vim.cmd('syntax region CyanText matchgroup=Conceal start="+B|" end="|+" concealends')
-vim.cmd('syntax region CeladonText matchgroup=Conceal start="+T|" end="|+" concealends')
+vim.schedule(function()
+  vim.cmd('syntax region ScarletText matchgroup=Conceal start="+R|" end="|+" concealends')
+  vim.cmd('syntax region MossText matchgroup=Conceal start="+G|" end="|+" concealends')
+  vim.cmd('syntax region SandText matchgroup=Conceal start="+S|" end="|+" concealends')
+  vim.cmd('syntax region SaffronText matchgroup=Conceal start="+Y|" end="|+" concealends')
+  vim.cmd('syntax region OrangeText matchgroup=Conceal start="+O|" end="|+" concealends')
+  vim.cmd('syntax region CyanText matchgroup=Conceal start="+B|" end="|+" concealends')
+  vim.cmd('syntax region CeladonText matchgroup=Conceal start="+T|" end="|+" concealends')
+  vim.cmd("syntax region tokiPonaLongGlyph start=/%U000f1997/ end=/%U000f1998/ concealends")
+end)
 require("mini.surround").config.custom_surroundings = {
   ["R"] = { output = { left = "+R|", right = "|+" } },
   ["G"] = { output = { left = "+G|", right = "|+" } },
@@ -69,12 +72,13 @@ require("mini.surround").config.custom_surroundings = {
 }
 
 -------- Plugins ---------------------------------------------------------------
+vim.api.nvim_set_hl(0, "tokiPonaLongGlyph", { fg = "#e68d53", underline = true })
 
 ---- RenderMarkdown ------------------------------------------------------------
 vim.g.render_markdown_config = {
+  -- anti_conceal = { enabled = false },
   render_modes = true,
   completions = { lsp = { enabled = true } },
-  -- checkbox = { enabled = false },
   checkbox = {
     checked = { icon = "󰫈", highlight = "Bg25Text" }, --, scope_highlight = "RenderMarkdownCheckedItem" },
     unchecked = { icon = "󰋙" }, -- scope_highlight = nil },
@@ -91,8 +95,20 @@ vim.g.render_markdown_config = {
     },
   },
   link = {
-    footnote = { superscript = false },
-    wiki = { scope_highlight = "RenderMarkdownWikiLinkText" },
+    -- footnote = { superscript = false },
+    highlight = "RenderMarkdownLink",
+    wiki = {
+      highlight = "RenderMarkdownWikiLink",
+      scope_highlight = nil,
+      icon = "",
+    },
+    image = "",
+    custom = {
+      audio = { icon = " ", pattern = "^!%[%[.*%.m[4p][a3]$", kind = "file", highlight = "RenderMarkdownLink" },
+      video = { icon = " ", pattern = "^!%[%[.*%.m[pk][4v]$", kind = "file", highlight = "RenderMarkdownLink" },
+      webm = { icon = " ", pattern = "%.webm$", kind = "file", highlight = "RenderMarkdownLink" },
+      wikipedia = { icon = "󰖬", pattern = "wikipedia%.org", kind = "url", highlight = "SandText" },
+    },
   },
   -- bullet = { enabled = false },
   bullet = { icons = { "󰆧" }, right_pad = 0 },
@@ -118,12 +134,20 @@ vim.g.render_markdown_config = {
   },
   code = {
     language_icon = true,
-    language_name = false,
+    language_name = true,
     language_info = true,
     width = "block",
     left_pad = 2,
     inline_left = ">",
     border = "thin",
+  },
+  callout = {
+    note = {
+      raw = "[!WIP]",
+      rendered = "󱌣 Under Construction",
+      highlight = "RenderMarkdownWarn",
+      category = "custom",
+    },
   },
   latex = { enabled = false },
   html = { comment = { conceal = false } },

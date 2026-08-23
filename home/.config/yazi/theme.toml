@@ -47,19 +47,19 @@ perm_sep = { fg = "#C1A387" }
 [input]
 border = { fg = "#E68D53" }
 title = { fg = "#afd2e9" }
-value = {  }
+value = {}
 selected = { fg = "#3b3228", bg = "#f8e2a0" }
 
 [pick]
 border = { fg = "#E68D53" }
 active = { fg = "#f4b8e4" }
-inactive = {  }
+inactive = {}
 
 [confirm]
 border = { fg = "#E68D53" }
-title = {  }
-content = {  }
-list = {  }
+title = {}
+content = {}
+list = {}
 btn_yes = { fg = "#92a650" }
 btn_no = { fg = "#E86045" }
 
@@ -68,7 +68,7 @@ border = { fg = "#99d1db" }
 
 [tasks]
 border = { fg = "#E68D53" }
-title = {  }
+title = {}
 hovered = { fg = "#3b3228", bg = "#f8e2a0" }
 
 [which]
@@ -116,9 +116,9 @@ rules = [
 
 [spot]
 border = { fg = "#E68D53" }
-title = {  }
+title = {}
 tbl_cell = { fg = "#3b3228", bg = "#f8e2a0" }
-tbl_col = {  }
+tbl_col = {}
 
 [icon]
 dirs = [
@@ -190,6 +190,9 @@ prepend_exts = [
   { name = "mkv", text = "", fg = "#3ECCBE" },
   # audio
   { name = "mp3", text = "", fg = "#f8e2a0" },
+  { name = "aac", text = "", fg = "#f8e2a0" },
+  { name = "m4a", text = "", fg = "#f8e2a0" },
+  { name = "ogg", text = "", fg = "#f8e2a0" },
   { name = "wav", text = "", fg = "#f8e2a0" },
   { name = "FLAC", text = "", fg = "#f8e2a0" },
   { name = "m4b", text = "󱚓", fg = "#f8e2a0" },

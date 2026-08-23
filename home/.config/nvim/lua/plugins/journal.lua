@@ -23,9 +23,15 @@ require("journal").setup({
     entries = {
       sun = {
         format = weekday_format,
-        template = weekday_template,
         frequency = { day = 7 },
         date_modifier = "last sunday",
+        template = "---\nid: %Y-%m-%d\ntags: daily-notes\n---\n\n"
+          .. "# %Y-%m-%d__%A\n\n"
+          .. "## Achievements\n\n"
+          .. "## Do\n\n"
+          .. "```markdown\n[13:15] Therapy\n```\n\n"
+          .. "## Observations\n\n"
+          .. "## Gratitude\n",
       },
       mon = {
         format = weekday_format,
@@ -41,9 +47,15 @@ require("journal").setup({
       },
       wed = {
         format = weekday_format,
-        template = weekday_template,
         frequency = { day = 7 },
         date_modifier = "wednesday",
+        template = "---\nid: %Y-%m-%d\ntags: daily-notes\n---\n\n"
+          .. "# %Y-%m-%d__%A\n\n"
+          .. "## Achievements\n\n"
+          .. "## Do\n\n"
+          .. "```markdown\n[12:00] Voice Lesson\n```\n\n"
+          .. "## Observations\n\n"
+          .. "## Gratitude\n",
       },
       thu = {
         format = weekday_format,

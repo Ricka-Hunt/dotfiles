@@ -1,16 +1,12 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "dbcf63b90b358f058637ea370202e3849013383b",
+      "rev": "29580a066a593b4243c2525c0e78d822f40b3742",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.lib": {
-      "rev": "2789206e10a0e4880f808c2aaf52bc57d876b481",
+      "rev": "c8fdc12c8a2fab6cf786dd7141a283f8079f902b",
       "src": "https://github.com/saghen/blink.lib"
-    },
-    "browser-bookmarks.nvim": {
-      "rev": "06cfcb53bf3012792f36eb8eb6cd08f782c9b329",
-      "src": "https://github.com/dhruvmanila/browser-bookmarks.nvim"
     },
     "bullets.vim": {
       "rev": "81570b98ca44b4100b3ddcf8d9ca74b9a9b0c884",
@@ -21,7 +17,7 @@
       "src": "https://github.com/bngarren/checkmate.nvim"
     },
     "conform.nvim": {
-      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "csvview.nvim": {
@@ -29,7 +25,7 @@
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
     "desert-witch.nvim": {
-      "rev": "483630279324d36e7dad4ded332801fcce819d84",
+      "rev": "3968f426c10e9b6a203f7ce135351763f9c41287",
       "src": "https://codeberg.org/trickyni/desert-witch.nvim"
     },
     "eyeliner.nvim": {
@@ -41,16 +37,16 @@
       "src": "https://github.com/chenxin-yan/footnote.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
+      "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
-    },
-    "grug-far.nvim": {
-      "rev": "6e05398cf6cad05b3fb46569db96b1ccfcbbd402",
-      "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "guttermarks.nvim": {
       "rev": "50088f99c2e978afe7f8e339e98b397babc7cbd2",
       "src": "https://github.com/dimtion/guttermarks.nvim"
+    },
+    "image.nvim": {
+      "rev": "5c6f29a5069e1f7bd5773ce5907454063b0f125d",
+      "src": "https://github.com/3rd/image.nvim"
     },
     "journal.nvim": {
       "rev": "247b2c731bf4b2c01410a08747b3fa08c3033517",
@@ -125,7 +121,7 @@
       "src": "https://github.com/catgoose/nvim-colorizer.lua"
     },
     "nvim-lspconfig": {
-      "rev": "7ab79bb1b57160a537f427ac8a6026102f12b701",
+      "rev": "221c43884319e791519f0d6c94a7f2fbcd653278",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-pack-ui": {
@@ -133,11 +129,11 @@
       "src": "https://codeberg.org/cryptomilk/nvim-pack-ui"
     },
     "nvim-rip-substitute": {
-      "rev": "5aafa8e31971d2fb1dbb207f1ecd3b12b1ba0f88",
+      "rev": "e3e1696bf934af7ae9130daabcafa07d9176d195",
       "src": "https://github.com/chrisgrieser/nvim-rip-substitute"
     },
     "nvim-treesitter": {
-      "rev": "61df84986b4b4ec469ee745a182e433d49f8c27e",
+      "rev": "e82ef6ae2c3eeb96c6916b29917f96bf630b2cdb",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
@@ -145,7 +141,7 @@
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "obsidian.nvim": {
-      "rev": "ab59625e14922b04f90605a15da4f9e91504f780",
+      "rev": "07f94ef04a417555ee56a5895ddeb740f2de0033",
       "src": "https://github.com/obsidian-nvim/obsidian.nvim"
     },
     "plenary.nvim": {
@@ -153,20 +149,16 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "rainbow-delimiters.nvim": {
-      "rev": "a798325b7f36acc62741d1029930a7b96d4dd4bf",
+      "rev": "012f1480cd9a5fc99fce7678e0a536421a53fc46",
       "src": "https://gitlab.com/HiPhish/rainbow-delimiters.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "f422cb5c6855f150e2ddcfaf44e7157b98b34f6a",
+      "rev": "4663eb3ecd538bd5062628fb6d95bbe6bdca78f6",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
-    },
-    "sqlite.lua": {
-      "rev": "50092d60feb242602d7578398c6eb53b4a8ffe7b",
-      "src": "https://github.com/kkharji/sqlite.lua"
     },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
@@ -180,16 +172,12 @@
       "rev": "dcbfe065297d31823561ba787f51056c147aa682",
       "src": "https://github.com/tpope/vim-abolish"
     },
-    "vim-markdownfootnotes": {
-      "rev": "2b288149f48cfaf7465d25bb094ed62898f5e5b0",
-      "src": "https://github.com/vim-pandoc/vim-markdownfootnotes"
-    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
     },
     "yazi.nvim": {
-      "rev": "840b9792a6ec97afce384f6821e64409510d6246",
+      "rev": "187834da499d3a7a54407f9edc507bcaf32c18e6",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     },
     "zen-mode.nvim": {

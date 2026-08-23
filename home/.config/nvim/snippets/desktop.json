@@ -1,0 +1,13 @@
+{
+  "link": {
+    "prefix": "link",
+    "body": [
+      "[Desktop Entry]",
+      "Version=1.0",
+      "Type=Link",
+      "Name=$1",
+      "URL=$2",
+      "Keywords=${0:semicolon-separated tags}"
+    ]
+  }
+}
